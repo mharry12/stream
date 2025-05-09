@@ -5,6 +5,7 @@ from rest_framework.permissions import AllowAny
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from google.oauth2 import id_token
+from rest_framework.decorators import authentication_classes, permission_classes
 from google.auth.transport import requests as google_requests
 
 from .models import User
@@ -66,8 +67,9 @@ class LoginView(APIView):
 # ---------------------------
 GOOGLE_CLIENT_ID = "your-google-client-id.apps.googleusercontent.com"
 
+@authentication_classes([])  # disable authentication
+@permission_classes([AllowAny])
 class GoogleLoginView(APIView):
-    permission_classes = [AllowAny]
 
     def post(self, request):
         serializer = GoogleAuthSerializer(data=request.data)
