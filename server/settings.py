@@ -76,8 +76,7 @@ AUTHENTICATION_BACKENDS = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-
-"goth-lee-tdtt.vercel.app"
+    "https://goth-lee-tdtt.vercel.app",
 ]
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=21),
